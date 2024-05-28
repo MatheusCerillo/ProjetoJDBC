@@ -1,5 +1,6 @@
 package br.unipar;
 
+import java.security.PublicKey;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -13,7 +14,7 @@ public class Main {
 
 
     public static void main(String[] args) {
-        criarTabelaUsuario();
+
     }
     //localhost -> Onde esta o banco
     //5432 -> porta padrão do banco
@@ -34,7 +35,64 @@ public class Main {
 
             statement.executeUpdate(sql);
 
-            System.out.println("TABELA CRIADA");
+            System.out.println("TABELA USUARIOS CRIADA");
+
+        }catch (SQLException exception){
+            exception.printStackTrace();
+        }
+    }
+
+    public static void criarTabelaVenda(){
+        try{
+            Connection conn = connection();
+
+            Statement statement = conn.createStatement();
+
+            String sql = " CREATE TABLE IF NOT EXISTS venda ("
+                       + " id_venda SERIAL PRIMARY KEY,"
+                       + " cliente VARCHAR(50) NOT NULL,"
+                       + " produto VARCHAR(50) NOT NULL,";
+
+            statement.executeUpdate(sql);
+
+            System.out.println("TABELA VENDA CRIADA");
+
+        }catch (SQLException exception){
+            exception.printStackTrace();
+        }
+    }
+
+    public static void criarTabelaProduto(){
+        try{
+            Connection conn = connection();
+
+            Statement statement = conn.createStatement();
+
+            String sql = " CREATE TABLE IF NOT EXISTS produto ("
+                    + " id_produto SERIAL PRIMARY KEY,"
+                    + " descricao VARCHAR(50) NOT NULL,"
+                    + " valor DOUBLE NOT NULL,";
+
+            statement.executeUpdate(sql);
+
+            System.out.println("TABELA PRODUTO CRIADA");
+
+
+        }catch (SQLException exception){
+            exception.printStackTrace();
+        }
+    }
+
+    public static void criarTabelaCliente(){
+        try{
+            Connection conn = connection();
+            Statement statement = conn.createStatement();
+            String sql = " CREATE TABLE IF NOT EXISTS cliente ("
+                    + " id_cliente SERIAL PRIMARY KEY,"
+                    + " nome VARCHAR(50) NOT NULL,"
+                    + " cpf VARCHAR(14) NOT NULL";
+
+            System.out.println("TABELA CLIENTE CRIADA");
 
         }catch (SQLException exception){
             exception.printStackTrace();
