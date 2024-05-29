@@ -10,11 +10,7 @@ public class Main {
 
 
     public static void main(String[] args) {
-        //criarTabelaUsuario();
-
-        //inserirUsuario("taffe", "12345", "Fabio", "1890-01-01");
-
-        //listarTodosUsuario();
+      
     }
     //localhost -> Onde esta o banco
     //5432 -> porta padrão do banco
